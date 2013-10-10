@@ -8,6 +8,11 @@ using namespace std;
 template<class T>
 class Data {
 public:
+
+	Data() {
+
+	}
+
 	Data(int dim) {
 		_data = new T[dim];
 		_dimension = dim;
@@ -23,15 +28,16 @@ public:
 	}
 
 	~Data() {
-		delete _data;
+		//delete _data;
 	};
 
 	T operator [](int) const;
     T& operator [](int);
 
-    int output();
-    void print();
+    const int output() const;
+    const void print() const;
 
+    void setDimension(int);
     void setInput(T*);
     void setOutput(int);
     

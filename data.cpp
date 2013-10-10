@@ -1,3 +1,6 @@
+#ifndef __DATA_CPP
+#define __DATA_CPP
+
 #include "data.h"
 
 template<class T>
@@ -11,16 +14,16 @@ T& Data<T>::operator[](int n) {
 }
 
 template<class T>
-int Data<T>::output() {
+const int Data<T>::output() const {
 	return _output;
 }
 
 template<class T>
-void Data<T>::print() {
+const void Data<T>::print() const {
 	for (int i = 0 ; i < _dimension ; ++i) {
 		cout << _data[i] << "   ";
 	}
-	cout <<endl;
+	cout << '\t' << _output << endl;
 }
 
 template<class T>
@@ -34,3 +37,11 @@ template<class T>
 void Data<T>::setOutput(int out) {
 	_output = out;
 }
+
+template<class T>
+void Data<T>::setDimension(int dim) {
+	_data = new T[dim];
+	_dimension = dim;
+}
+
+#endif
