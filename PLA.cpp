@@ -22,20 +22,17 @@ void PLAEngine::init() {
 	_updateNum = 0;
 }
 
-void PLAEngine::start(Data<float>* dataList, int num) {
+void PLAEngine::start(Data* dataList, int num) {
 	cout << "dimension = " << _dimension << endl;
 	
 	for (int n = 0 ; n < 60 ; n++) {
 		cout << "n = " << n << endl;
-		bool b = true;
+		int b = 0;
 		for (int i = 0 ; i < num ; i++ ){
 			//cout << "i = " << i << endl;
-			bool t = next(dataList[i]);
-
-			b = t & b;
+			b += next(dataList[i]);
 		}
-
-		if(b) {
+		if(b == 400) {
 			cout << "finished: " << _updateNum << endl;
 			break;
 		} else {
@@ -46,17 +43,20 @@ void PLAEngine::start(Data<float>* dataList, int num) {
 	cout << _updateNum << endl;
 }
 
-bool PLAEngine::next(const Data<float> data) {
+int PLAEngine::next(const Data data) {
 
 	_timer++;
 
+	//data.print();
 	float accumulate = 0.0f;
+	//cout << accumulate;
 	for (int i = 0 ; i < _dimension ; ++i) {
 		accumulate += _w[i] * data[i];
 	}
 
 	float sign = (accumulate >= 0.0f)? 1:-1;
 	float y_n = data.output();
+	cout << accumulate << "   " << y_n << endl;
 
 	if(sign * y_n < 0) {
 		for (int i = 0 ; i < _dimension ; i++) {
@@ -64,12 +64,13 @@ bool PLAEngine::next(const Data<float> data) {
 		}
 		_updateNum++;
 
-		data.print();
+		//data.print();
 		print();
-		return false;
+		return 0;
 	} else {
 		//print();
-		return true;
+		//data.print();
+		return 1;
 	}
 }
 

@@ -5,7 +5,6 @@
 
 using namespace std;
 
-template<class T>
 class Data {
 public:
 
@@ -14,13 +13,13 @@ public:
 	}
 
 	Data(int dim) {
-		_data = new T[dim];
+		_data = new float[dim];
 		_dimension = dim;
 	};
 
-	Data(int dim, T* input, int out) {
+	Data(int dim, float* input, int out) {
 		_dimension = dim;
-		_data = new T[dim];
+		_data = new float[dim];
 		for (int i = 0 ; i < dim ; i++) {
 			_data[i] = input[i];
 		}
@@ -31,19 +30,19 @@ public:
 		//delete _data;
 	};
 
-	T operator [](int) const;
-    T& operator [](int);
+	float operator [](int) const;
+    float& operator [](int);
 
     const int output() const;
     const void print() const;
 
     void setDimension(int);
-    void setInput(T*);
+    void setInput(float*);
     void setOutput(int);
     
 
 private:
-	T* _data;
+	float* _data;
 	int _output;
 	int _dimension;
 };

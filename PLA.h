@@ -2,7 +2,6 @@
 #define __PLA_H
 
 #include "data.h"
-#include "data.cpp"
 
 class PLAEngine{
 public:
@@ -16,9 +15,9 @@ public:
 
 	}
 
-	void start(Data<float>*, int);
+	void start(Data*, int);
 
-	bool next(Data<float>);
+	int next(Data);
 	void print();
 
 private:

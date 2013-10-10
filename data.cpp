@@ -3,44 +3,38 @@
 
 #include "data.h"
 
-template<class T>
-T Data<T>::operator[](int n) const {
+float Data::operator[](int n) const {
 	return _data[n];
 }
 
-template<class T>
-T& Data<T>::operator[](int n) {
+float& Data::operator[](int n) {
 	return _data[n];
 }
 
-template<class T>
-const int Data<T>::output() const {
+const int Data::output() const {
 	return _output;
 }
 
-template<class T>
-const void Data<T>::print() const {
+const void Data::print() const {
+	cout << "data: ";
 	for (int i = 0 ; i < _dimension ; ++i) {
 		cout << _data[i] << "   ";
 	}
 	cout << '\t' << _output << endl;
 }
 
-template<class T>
-void Data<T>::setInput(T* in) {
+void Data::setInput(float* in) {
 	for (int i = 0 ; i < _dimension ; ++i) {
 		_data[i] = in[i];
 	}
 }
 
-template<class T>
-void Data<T>::setOutput(int out) {
+void Data::setOutput(int out) {
 	_output = out;
 }
 
-template<class T>
-void Data<T>::setDimension(int dim) {
-	_data = new T[dim];
+void Data::setDimension(int dim) {
+	_data = new float[dim];
 	_dimension = dim;
 }
 
