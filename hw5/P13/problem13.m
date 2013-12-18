@@ -4,7 +4,7 @@ load hw5_13_train.dat;
 load hw5_13_test.dat;
 test_data = hw5_13_test;
 
-for iter = 1:100
+for iter = 1:1000
 
     n = mod(fix(rand * 100), 16)+1;
     m = mod(fix(rand * 100), 4)+17;
